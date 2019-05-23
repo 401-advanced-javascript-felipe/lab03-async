@@ -9,7 +9,11 @@ if( ! (files instanceof Array && files.length) ) {
   throw new Error('Invalid Args');
 }
 
+
+
 fileReader(files, (err,data) => {
   if ( err ) { throw err; }
-  console.log('From Callback:', data);
+  setTimeout(() => {
+    console.log('From Callback:', data);
+  }, 1000);
 });
