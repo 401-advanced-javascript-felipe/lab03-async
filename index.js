@@ -13,7 +13,5 @@ if( ! (files instanceof Array && files.length) ) {
 
 fileReader(files, (err,data) => {
   if ( err ) { throw err; }
-  setTimeout(() => {
-    console.log('From Callback:', data);
-  }, 1000);
+  console.log(data);
 });
