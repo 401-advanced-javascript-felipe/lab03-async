@@ -12,8 +12,11 @@ if( ! (files instanceof Array && files.length) ) {
 
 
 
-fileReader(files, (err,data) => {
-  if ( err ) { throw err; }
-  console.log('From Callback:', data);
+// fileReader(files, (err,data) => {
+//   if ( err ) { throw err; }
+//   console.log('From Callback:', data);
 
-});
+// });
+
+fileReader(files)
+  .then(console.log);
