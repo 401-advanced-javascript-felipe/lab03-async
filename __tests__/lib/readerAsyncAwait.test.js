@@ -2,52 +2,46 @@
 
 jest.mock('fs');
 
-const reader = require('../../lib/readerAsyncAwait.js');
+const fileReader = require('../../lib/readerAsyncAwait.js');
 
-describe('File Reader Module with promises', () => {
-  
-  it('should return an error when given bad file info and quantity ', async () => {
+describe('File Reader Module with async', () => {
+
+  it('should return an error when given bad file info', async () => {
     expect.assertions(1);
+    // Arrange
     let files = ['bad.txt'];
-    await expect(reader(files)).toBe('Invalid Files')
-    
-  });
 
-  it('should return an error when given bad file info and quantity ', async () => {
-    expect.assertions(1);
-    let files = ['bad.txt'];
-    try {
-      await reader(files);
-    } catch(err) {
-      console.log(err);
-      expect(e).toMatch('Invalid Files')
+    // Act and Assert
+    try{
+      await fileReader(files);
+    } catch(e){
+      expect(e).toMatch('Invalid File');
     }
-    
   });
 
-
-  it('should return an array for data', async () => {
+  it('should return an array', async () => {
     expect.assertions(1);
+    // Arrange
     let files = ['file1.txt', 'file2.txt', 'file2.txt'];
-    try {
-      let data = await reader(files);
-      expect(data instanceof Array).toBeTruthy();
-    } catch (error) {
-      
-    }
 
+    // Act
+    let result = await fileReader(files);
+
+    // Assert
+    expect(result).toBeInstanceOf(Array);
 
   });
 
-  it('should have File content inside the array', () => {
+  it('should have file content inside of the array', async () => {
     expect.assertions(1);
+    // Arrange
     let files = ['file1.txt', 'file2.txt', 'file2.txt'];
-    try {
-      // let data = await reader(files);
-      expect(data.length).toBe(3);
-      expect(data).toContain('File Contents')
-    } catch (error) {
-      
-    }
+
+    // Act
+    let result = await fileReader(files);
+
+    // Assert
+    expect(result).toContain('File Contents');
   });
+
 });

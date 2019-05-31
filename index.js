@@ -1,12 +1,14 @@
 'use strict';
 
-// For Promises
-// const fileReader = require('./lib/readerPromises.js');
+
 // For Callbacks
 // const fileReader = require('./lib/reader.js');
+
+// For Promises
+// const fileReader = require('./lib/readerPromises.js');
+
 // For Async Await
 const fileReader = require('./lib/readerAsyncAwait.js');
-
 
 
 // Obtain and assert input
@@ -16,24 +18,16 @@ if( ! (files instanceof Array && files.length) ) {
   throw new Error('Invalid Args');
 }
 
-// For Promises
-// fileReader(files)
-//   .then(console.log);
 // For Callbacks
-
 // fileReader(files, (err,data) => {
 //   if ( err ) { throw err; }
 //   console.log('From Callback:', data);
-
 // });
 
+// For Promises
+// fileReader(files)
+//   .then(console.log);
 
-try {
-  fileReader(files)
-    .then(data =>{
-      console.log('in index', data);
-    });
-}
-catch(err){
-  console.log(err);
-}
+// For Aync Await
+fileReader(files)
+  .then(console.log);
